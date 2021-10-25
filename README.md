@@ -22,6 +22,7 @@ Tecnologías y recursos utilizados / Technologies and resources used:
 * mongoose
 * ejs-mate
 * JWT
+* bcrypt
 * dotenv
 * nodemon
 * cookie-parser

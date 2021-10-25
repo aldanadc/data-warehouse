@@ -5,6 +5,7 @@ import { verifyToken } from "../middlewares/auth.middleware.mjs";
 import catchAsync from "../utils/catchAsync.mjs";
 import ExpressError from "../utils/ExpressError.mjs";
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 const ObjectID = mongoose.Types.ObjectId;
 
 export function getRouter() {
@@ -32,9 +33,18 @@ const createNewUser = async (request, response, next) => {
   if (existingUser.length > 0) {
     throw new ExpressError(400, "Ya existe un usuario registrado con ese email");
   }else {
+    const { password } = request.body.newUser;
+    const hashedPassword = await hashPassword(password);
+    request.body.newUser.password = hashedPassword;
     await createUser(request.body.newUser);
     response.redirect("users");
   }
+}
+
+const hashPassword = async (password) => {
+  const salt = await bcrypt.genSalt(12);
+  const hash = await bcrypt.hash(password, salt);
+  return hash
 }
 
 const showAllUsers = async (request, response) => {

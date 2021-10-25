@@ -7,6 +7,7 @@ import { createModel as createCountryModel } from "../db_models/country.mjs";
 import { createModel as createCompanyModel } from "../db_models/company.mjs";
 import { createModel as createContactModel } from "../db_models/contact.mjs";
 import { Method } from "../db_models/contact.mjs";
+import bcrypt from "bcrypt";
 const User = createUserModel();
 const Region = createRegionModel();
 const City = createCityModel();
@@ -63,16 +64,19 @@ export async function deleteUser(id) {
 //LOGIN
 
 export async function validateUserAgainstDB(logInInfo) {
+  const { email, password } = logInInfo;
   const user = await User.findOne({
-    email: logInInfo.email,
-    password: logInInfo.password
+    email: email,
   }).exec();
-  if (user) {
+
+  const match = await bcrypt.compare(password, user.password);
+  if (match) {
     return user;
   } else {
     return false;
   }
 }
+
 
 //REGIONS
 

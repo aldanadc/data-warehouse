@@ -297,7 +297,7 @@
                       <select class="form-select" id="preference" name="contact_methods[<%=`${i}`%>][preference]" required>
                         <option class="has-text-link" selected value="<%= contact[0].contact_methods[`${i}`].preference %>">
                           <% if (contact[0].contact_methods[`${i}`].preference === "favourite") { %>
-                            Favorito
+                            Canal favorito
                           <% } else if (contact[0].contact_methods[`${i}`].preference === "no preference") { %>
                             Sin preferencia
                           <% } else { %> 
@@ -309,7 +309,7 @@
                           <% if (item !=contact[0].contact_methods[`${i}`].preference) { %>
                             <option class="has-text-link" value="<%= item %>">
                               <% if (item === "favourite") { %>
-                                Favorito
+                                Canal favorito
                               <% } else if (item === "no preference") { %>
                                 Sin preferencia
                               <% } else { %> 

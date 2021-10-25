@@ -37,9 +37,9 @@ Necesitarás tener instalado Node.js y un cluster de **MongoDB Atlas** o una bas
 
 2. Correr `npm i` o `npm install` en la carpeta raíz del repositorio clonado para instalar todas las dependencias necesarias.
 
-3. Renombrar el archivo **_sample.env_** que se encuentra en la carpeta raíz para que se llame solo **_.env_**, ya que estas serán tus variables de entorno. Se puede personalizar el contenido pero debe asegurarse que se utilice la información correspondiente a la base de datos a utilizar. Se deberá modificar DB_SCHEMA y DB_AUTHORITY de acuerdo al tipo de base de datos que se utilice (local o remota). En caso de utilizar un número de puerto distinto al provisto, habrá que modificar el mismo en la línea 5 del archivo **_searchContacts.mjs_** de la carpeta _front/scripts_.
+3. Renombrar el archivo **_sample.env_** que se encuentra en la carpeta raíz para que se llame solo **_.env_**, ya que estas serán tus variables de entorno. Personalizar el contenido asegurándose de que se utilice la información correspondiente a la base de datos a utilizar. Se deberá modificar DB_SCHEMA y DB_AUTHORITY de acuerdo al tipo de base de datos que se utilice (local o remota). En caso de utilizar un número de puerto distinto al provisto, habrá que modificar el mismo también en la línea 5 del archivo **_searchContacts.mjs_** de la carpeta _front/scripts_.
 
-4. Desde la carpeta _backed_ ejecutar `node seedsIndex.mjs` para cargar la base de datos con la información de ejemplo. 
+4. Desde la carpeta _backend_ ejecutar `node seedsIndex.mjs` para cargar la base de datos con la información de ejemplo. 
 
 5. Una vez terminado el proceso del paso anterior, nuevamente desde la carpeta _backend_ ejecutar `node index.mjs` y esperar mientras se establece la conexión con la base de datos y comienza el servidor. Al finalizar, la consola debería mostrar "Connection to database open" y "Server is ready".
 
@@ -70,7 +70,7 @@ You will need to have Node.js and a MongoDB cluster or local MongoDB database.
 
 2. Run `npm i` or `npm install` on the cloned repo's root folder to install all necessary dependencies.
 
-3. Rename the **_sample.env_** file in the project's root folder to be only **_.env_** as these will be your environment variables. You can customize the variables as you like but make sure you use the correct information for the database to use for this project. For example, you will need to update DB_SCHEMA and DB_AUTHORITY according to the type of database you will use (local or remote). In case of using a different port number from the one provided, it will also have to be updated in line 5 of the file **_searchContacts.mjs_** from the folder _front/scripts_.
+3. Rename the **_sample.env_** file in the project's root folder to be only **_.env_** as these will be your environment variables. Customize the variables as you like but make sure you use the correct information for the database you will use for this project. For example, you will need to update DB_SCHEMA and DB_AUTHORITY according to the type of database you will use (local or remote). In case of using a different port number from the one provided, it will also have to be updated in line 5 of the file **_searchContacts.mjs_** from the folder _front/scripts_.
 
 4. From the _backend_ folder, run `node seedsIndex.mjs` on your console in order to seed the database with the example collections.
 

@@ -168,7 +168,6 @@ export async function createCompany(companyInfo) {
 }
 
 export async function deleteCompany(id) {
-
   await Company.findOneAndDelete({_id: id});
 }
 

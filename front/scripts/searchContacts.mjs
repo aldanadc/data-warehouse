@@ -1,6 +1,3 @@
-
-const searchWrapper = document.getElementById("main-search-wrapper");
-
 function searchContacts (inputValue) {
 
   async function newSearch(searchTerm) {

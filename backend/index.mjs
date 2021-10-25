@@ -43,7 +43,7 @@ function config(server) {
   server.engine("ejs", ejsMate);
   server.set("view engine", "ejs");
   server.set("views", path.join(__dirname, "views"));
-  server.use(express.static("../public"));
+  server.use(express.static("../front"));
 }
 
 

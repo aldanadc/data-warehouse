@@ -12,6 +12,9 @@ Project #4 from the Full Stack Web Development course at Acámica. Application f
 
 Tecnologías y recursos utilizados / Technologies and resources used:
 
+* HTML/ejs
+* CSS/Sass
+* Bulma
 * JavaScript
 * Node.js
 * Express.js
@@ -21,6 +24,9 @@ Tecnologías y recursos utilizados / Technologies and resources used:
 * JWT
 * dotenv
 * nodemon
+* cookie-parser
+* method-override
+* path
 * [sort-tables](https://github.com/stationer/SortTable)
 
 

@@ -35,7 +35,6 @@ export const locations = [
   }
 ]
 
-//export locations;
 
 export const users = [
   {
@@ -56,7 +55,7 @@ export const users = [
 
 export const companies = [
   {
-    name: "Benito SA",
+    name: "Benito S.A.",
     address: "Los Patos 2556",
     email: "benitos@email.com",
     phone_number: "+541142587945",
@@ -99,7 +98,7 @@ export const contacts = [
     role: "Ejecutivo de cuentas",
     email: "letitlinger@email.com",
     interest: 50,
-    company: "Benito SA",
+    company: "Benito S.A.",
     city: "Texas",
     address: "Cachi 725",
     contact_methods: [

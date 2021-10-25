@@ -4,7 +4,6 @@ import { isAdmin } from "../middlewares/auth.middleware.mjs";
 import { verifyToken } from "../middlewares/auth.middleware.mjs";
 import catchAsync from "../utils/catchAsync.mjs";
 import ExpressError from "../utils/ExpressError.mjs";
-import { validateNewUser, validateEditUser } from "../utils/joiSchemas.mjs";
 import mongoose from "mongoose";
 const ObjectID = mongoose.Types.ObjectId;
 
@@ -14,9 +13,9 @@ export function getRouter() {
   router.get("/users", verifyToken, isAdmin, catchAsync(showAllUsers));
   router.get("/users/new", verifyToken, isAdmin, renderNewUserForm);
   router.get("/users/:id/edit", verifyToken, isAdmin, catchAsync(renderEditUserForm));
-  router.put("/users/:id/edit", verifyToken, isAdmin, validateEditUser, catchAsync(editOneUser));
+  router.put("/users/:id/edit", verifyToken, isAdmin, catchAsync(editOneUser));
   router.delete("/users/:id", verifyToken, isAdmin, catchAsync(deleteOneUser));
-  router.post("/users", verifyToken, isAdmin, validateNewUser, catchAsync(createNewUser));
+  router.post("/users", verifyToken, isAdmin, catchAsync(createNewUser));
   return router;
 }
 
@@ -44,15 +43,6 @@ const showAllUsers = async (request, response) => {
   response.render("users/allUsers", { users, currentProfile } );
 }
 
-const showOneUser = async (request, response, next) => {
-  const { id } = request.params;
-  if (!ObjectID.isValid(id)) {
-    return next(new ExpressError(400, "ID de usuario inválido"));
-  }
-  const user = await getUsers({_id: id});
-  if (user === null || user.length === 0) throw new ExpressError(404, "Usuario inexistente")
-  response.render("users/showUser", { user });
-}
 
 const renderEditUserForm = async (request, response, next) => {
   const { id } = request.params;
@@ -61,7 +51,6 @@ const renderEditUserForm = async (request, response, next) => {
   }
   const user = await getUsers({_id: id});
   if (user === null || user.length === 0) throw new ExpressError(404, "Usuario inexistente")
-  //response.render("users/editUser", { user });
   response.render("users/newEditUser", { user });
 }
 
@@ -72,7 +61,7 @@ const editOneUser = async (request, response, next) => {
   }
   if (!request.body.editUser) throw new ExpressError(400, "Información inválida");
   const userInfo = {...request.body.editUser};
-  await editUser(id, userInfo); //VER DE DEJAR PASSWORD ANTERIOR SI NO SE LO MODIFICA
+  await editUser(id, userInfo);
   response.redirect("/users");
 }
 

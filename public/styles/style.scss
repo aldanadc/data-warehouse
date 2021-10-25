@@ -46,12 +46,9 @@ body {
     width: 85%;
     
     h1 {
-      //color: #fbb13c;
       color: #01d1b2;
     }
 
-    // margin: auto;
-    // width: 90%;
 
     .all-companies-container {
 
@@ -73,8 +70,6 @@ body {
     }
 
     .all-contacts-container {
-      // width: 90%;
-      // margin: auto;
 
       #search-section {
         #main-search-wrapper {
@@ -151,8 +146,6 @@ body {
     }
 
     .all-users-container {
-      // width: 85%;
-      // margin: auto;
 
       .table-container {
         width: 80%;
@@ -206,8 +199,6 @@ body {
   }
 
   .regions-tree-container {
-    // width: 90%;
-    // margin: auto;
 
     .tree-container {
       width: 70%;
@@ -215,14 +206,6 @@ body {
     }
     
   }
-
-  // .table-head {
-  //   height: 4rem;
-  // }
-
-  // form {
-  //   width: 40%;
-  // }
 
   .form-item {
     width: 30%;
@@ -234,11 +217,6 @@ body {
     margin: 0 auto 500px auto;
     
   }
-
-  // .login-image {
-  //   width: 500px;
-  //   height: 350px;
-  // }
 
   .table {
     margin-bottom: 0;
@@ -258,15 +236,9 @@ body {
     display: inline;
   }
   
-  // .show-contact-card {
-  //   width: 60%;
-  // }
-
 
   .footer {
-   //position: relative; 
     margin-top: 150px;
-    //bottom: 0; 
     width: 100%;
     justify-content: space-between;
     padding: 0;
@@ -278,50 +250,12 @@ body {
   }
 
 
-  // .progress-bar.zero {
-  //   width: 0%;
-  // }
-
-  // .progress-bar.twentyFive {
-  //   width: 25%;
-  // }
-
-  // .progress-bar.fifty {
-  //   width: 50%;
-  // }
-
-  // .progress-bar.seventyFive {
-  //   width: 75%;
-  // }
-
-  // .progress-bar.oneHundred {
-  //   width: 100%;
-  // }
-
   .table-row.hover {
     background-color: rgba(251, 177, 60, 0.3);
   }
 
   .table-row.selected {
-    //background-color: rgba(242, 117, 35, 0.3);
     background-color: rgba(251, 177, 60, 0.3);
   }
 }
-
-
-
-// html {
-//   position: relative;
-// }
-
-// html, body {
-//   margin: 0;
-//   padding: 0;
-//   min-height: 100%;
-// }
-
-// .footer {
-//   position: absolute;
-//   bottom: 0;
-// }
 

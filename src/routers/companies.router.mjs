@@ -13,12 +13,6 @@ const ObjectID = mongoose.Types.ObjectId;
 export function getRouter() {
   const router = new Router();
 
-  // router.get("/companies", (request, response) => {
-  //   //response.send("Hola hola companies");
-  //   //response.render("companies/allCompanies")
-
-  // });
-
   router.get("/companies", verifyToken, catchAsync(getAllCompanies));
   router.get("/companies/new", verifyToken, catchAsync(renderNewCompanyForm));
   router.get("/companies/:id", verifyToken, catchAsync(getOneCompany));

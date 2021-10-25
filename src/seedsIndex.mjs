@@ -1,4 +1,3 @@
-//import Region from "../db_models/region";
 import { ENV } from "./config/env.mjs";
 import { locations, users, companies, contacts } from "./seeds/DBseeds.mjs";
 import mongoose from "mongoose";
@@ -15,10 +14,7 @@ const User = createUserModel();
 const Company = createCompanyModel();
 const Contact = createContactModel();
 
-
 const URL = `${ENV.DB_SCHEMA}://${ENV.DB_USERNAME}:${ENV.DB_PASSWORD}@${ENV.DB_AUTHORITY}/${ENV.DB_NAME}`;
-
-//const URL = "mongodb+srv://admin:bananaPancake@cluster0.8mxmo.mongodb.net/lalala";
 
 async function connectDB() {
 
@@ -124,22 +120,6 @@ const seedDb = async () => {
     await contact.save();
   }
 }
-
-// const seedDbCountries = async () => {
-//   await Country.deleteMany({});
-//   for (let i=0; i<2; i++) {
-//     const regionLength = locations[i].length;
-//     for (let i=0; i<regionLength; i++) {
-//       console.log(locations[i].countries[i].country)
-//       const country = new Country({
-//         name: locations[i].countries[i].country,
-//         country_id: "60d93213a3705f30e042aa0d"
-//       })
-//       await country.save();
-//     }
-//   }
-// }
-
 
 
 

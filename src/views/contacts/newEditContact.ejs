@@ -248,13 +248,13 @@
                         <option class="has-text-link" selected value="<%= contact[0].contact_methods[`${i}`].channel %>">
                           <% if (contact[0].contact_methods[`${i}`].channel === "phone") { %>
                             Teléfono
-                          <% } else if (contact[0].contact_methods[`${i}`].preference === "email") { %>
+                          <% } else if (contact[0].contact_methods[`${i}`].channel === "email") { %>
                             Email
-                          <% } else if (contact[0].contact_methods[`${i}`].preference === "whatsapp") { %>
+                          <% } else if (contact[0].contact_methods[`${i}`].channel === "whatsapp") { %>
                             WhatsApp
-                          <% } else if (contact[0].contact_methods[`${i}`].preference === "linkedin") { %>
+                          <% } else if (contact[0].contact_methods[`${i}`].channel === "linkedin") { %>
                             LinkedIn
-                          <% } else if (contact[0].contact_methods[`${i}`].preference === "twitter") { %> 
+                          <% } else if (contact[0].contact_methods[`${i}`].channel === "twitter") { %> 
                             Twitter
                           <% } %>
                         </option>
@@ -323,10 +323,10 @@
                         Por favor complete este campo
                       </div>
                     </span>
-                    <p id="delete-channel" class="has-text-danger mt-2 has-text-right is-clickable">Borrar canal</p>
                   </div>
-              <% } %>
+                  <p id="delete-channel" class="has-text-danger mt-2 has-text-right is-clickable">Borrar canal</p>
                 </div>
+              <% } %>
               </div>
               <div class="mt-3 has-text-right">
                 <p id="add" class="button has-text-success">Agregar canal</p>

@@ -28,7 +28,6 @@ export async function authenticateUser(request, response, next) {
 
 export function verifyToken(request, response, next) {
   request.currentUser = request.cookies.jwt;
-  //console.log(request.currentUser)
   const token = request.currentUser;
   
   if (token && token != null) {

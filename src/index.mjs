@@ -13,7 +13,6 @@ import methodOverride from "method-override";
 import ExpressError from "./utils/ExpressError.mjs";
 const __dirname = path.resolve();
 
-const basePath = "/1.0.0";
 
 function loadMiddlewares(server) {
   server.use(json());
@@ -59,14 +58,6 @@ async function main() {
   });
 
   config(server);
-  
-
-  // server.use((request, response, next) => {
-  //   // response.locals.success = request.flash("success");
-  //   // response.locals.error = request.flash("error");
-  //   response.locals.currentUser = request.user;
-  //   next();
-  // });
 
   server.all("*", (request, response, next) => {
     next(new ExpressError(404, "Página no encontrada"))

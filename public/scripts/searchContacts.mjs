@@ -108,11 +108,3 @@ function createTableRow(contact) {
   return row
 }
 
-{/* <td> 
-<% for (let method of contact.contact_methods) { %>
-  <% if (method.preference === "favourite") { %>
-  <span class="tag button is-inactive is-info tag-channel"> <%= method.channel.charAt(0).toUpperCase()+method.channel.slice(1) %></span>
-  <span class="hidden"><%= method.account %></span>
-  <% } %>
-<% } %>
-</td> */}

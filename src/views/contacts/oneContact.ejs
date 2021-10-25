@@ -15,33 +15,18 @@
             <% if (contact[0].interest === 0) { %>
               <span class=""><%= contact[0].interest %>%</span>
               <progress class="progress is-warning" value="<%= contact[0].interest %>" min="0" max="100"></progress>
-              <!-- <div class="progress mt-2">
-                <div class="progress-bar bg-warning zero" id="interest" min="0" max="100" value="<%= contact[0].interest %>"></div>
-              </div> -->
             <% } else if ((contact[0].interest === 25)) { %>
               <span><%= contact[0].interest %>%</span>
               <progress class="progress is-warning" value="<%= contact[0].interest %>" min="0" max="100"></progress>
-              <!-- <div class="progress mt-2">
-                <div class="progress-bar bg-warning twentyFive" id="interest" min="0" max="100" value="<%= contact[0].interest %>"></div>
-              </div> -->
             <% } else if (contact[0].interest === 50 ) { %>
               <span><%= contact[0].interest %>%</span>
               <progress class="progress is-info" value="<%= contact[0].interest %>" min="0" max="100"></progress>
-              <!-- <div class="progress mt-2">
-                <div class="progress-bar bg-info fifty" id="interest" min="0" max="100" value="<%= contact[0].interest %>"></div>
-              </div> -->
               <% } else if (contact[0].interest === 75) { %>
                 <span><%= contact[0].interest %>%</span>
                 <progress class="progress is-success" value="<%= contact[0].interest %>" min="0" max="100"></progress>
-                <!-- <div class="progress mt-2">
-                  <div class="progress-bar bg-success seventyFive" id="interest" min="0" max="100" value="<%= contact[0].interest %>"></div>
-                </div> -->
                 <% } else if (contact[0].interest === 100) { %>
                   <span class="mb-2"><%= contact[0].interest %>%</span>
                   <progress class="progress is-success" value="<%= contact[0].interest %>" min="0" max="100"></progress>
-                  <!-- <div class="progress mt-2">
-                    <div class="progress bg-success oneHundred" id="interest" min="0" max="100" value="<%= contact[0].interest %>"></div>
-                  </div> -->
                 <% } %>
         </div>
         <div class="column is-three-fifths mb-1 ml-6">

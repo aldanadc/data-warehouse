@@ -69,32 +69,3 @@ deteleChannel.forEach(button => {
   })
 })
 
-
-
-// function selectRegion() {
-//   countrySelect.innerHTML = "<option disabled selected>--Seleccione un país--</option>"
-//   citySelect.innerHTML = "<option disabled selected>--Seleccione una ciudad--</option>"
-//   const selectedRegion = region.options[region.selectedIndex].value;
-//   console.log(selectedRegion)
-//   for (let country of countriesData) {
-//     if (selectedRegion === country.region_id) {
-//       const option = document.createElement("option");
-//       option.innerHTML = country.name;
-//       option.value = country._id;
-//       countrySelect.appendChild(option);
-//     }        
-//   }      
-// }
-
-// function selectCountry() {
-//   citySelect.innerHTML = "<option disabled selected>--Seleccione una ciudad--</option>"
-//   selectedCountry = country.options[country.selectedIndex].value;
-//   for (let city of citiesData) {
-//     if (selectedCountry === city.country_id) {
-//       const option = document.createElement("option");
-//       option.innerHTML = city.name;
-//       option.value = city._id;
-//       citySelect.appendChild(option);
-//     }        
-//   }    
-// }

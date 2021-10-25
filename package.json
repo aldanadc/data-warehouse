@@ -4,7 +4,6 @@
   "description": "Web app to manage a company's contacts for marketing purposes",
   "main": "index.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "seeds": "node ./src/seedsIndex.mjs",
     "dev": "nodemon ./src/index.mjs"
   },

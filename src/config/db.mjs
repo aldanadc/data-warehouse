@@ -15,8 +15,6 @@ const Company = createCompanyModel();
 const Contact = createContactModel();
 
 const URL = `${ENV.DB_SCHEMA}://${ENV.DB_USERNAME}:${ENV.DB_PASSWORD}@${ENV.DB_AUTHORITY}/${ENV.DB_NAME}`;
-//const URL = "mongodb+srv://admin:bananaPancake@cluster0.8mxmo.mongodb.net/lalala";
-const DB_MODELS = {};
 
 export default async function connectDB() {
 
@@ -24,7 +22,7 @@ export default async function connectDB() {
 
   .then(() => {
     console.log("Connection to database open");
-    //DB_MODELS.User = createUserModel();
+
   })
   .catch(err => {
     console.log("There was an error");
@@ -170,7 +168,7 @@ export async function createCompany(companyInfo) {
 }
 
 export async function deleteCompany(id) {
-  //await Company.findByIdAndDelete(id);
+
   await Company.findOneAndDelete({_id: id});
 }
 
@@ -179,14 +177,6 @@ export async function updateCompany(id, companyInfo) {
   await company.save();
 }
 
-
-//CONTACTS
-
-// export async function createContactMethod(methodInfo) { //CREO QUE ESTABA SIN USAR
-//   const contactMethod = await new Method(methodInfo);
-//   //contactMethod.contact = contactId;
-//   await contactMethod.save();
-// }
 
 export async function createContact(contactInfo, methodInfo) {
   /** @type {mongoose.Model} */

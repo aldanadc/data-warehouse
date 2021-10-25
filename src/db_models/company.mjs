@@ -18,19 +18,6 @@ const companySchema = new Schema({
   toObject: { virtuals: true }
 });
 
-// companySchema.virtual("cityName").get(function() {
-//   const cityId = this.city;
-//   return cityId
-// })
-
-// companySchema.virtual("cityInfo").get(function() {
-//   return this.
-  
-//   ref: "cities",
-//   localField: "city",
-//   foreignField: "_id",
-//   justOne: true
-// });
 
 companySchema.virtual("cityInfo", {
   ref: "cities",

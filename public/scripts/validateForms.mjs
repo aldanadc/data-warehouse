@@ -3,10 +3,8 @@
   
   const forms = document.querySelectorAll(".validated-form")
 
-  // Loop over them and prevent submission
   Array.from(forms)
     .forEach(function (form) {
-      console.log(form)
       form.addEventListener('submit', function (event) {
         if (!form.checkValidity()) {
           event.preventDefault()

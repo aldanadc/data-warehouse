@@ -63,12 +63,12 @@
                 <% profiles.forEach(profile=> { %>
                   <% if (user[0].profile === profile && profile === "basic") { %>
                     <option value="" disabled>--Seleccione un perfil--</option>
-                    <option value="basic" selected>Básico</option>
-                    <option value="admin">Admin</option>
+                    <option value="basic" class="has-text-link" selected>Básico</option>
+                    <option value="admin" class="has-text-link">Admin</option>
                   <% } else if (user[0].profile === profile && profile === "admin") { %>
                     <option value="" disabled selected>--Seleccione un perfil--</option>
-                    <option value="basic">Básico</option>
-                    <option value="admin" selected>Admin</option>
+                    <option value="basic" class="has-text-link">Básico</option>
+                    <option value="admin" class="has-text-link" selected>Admin</option>
                   <% } %>
                 <% }) %>
               </select>
@@ -78,8 +78,8 @@
             <% }else { %>
               <select class="form-select" name="newUser[profile]" id="profile" required>
                 <option value="" disabled selected>--Seleccione un perfil--</option>
-                <option value="basic">Básico</option>
-                <option value="admin">Admin</option>
+                <option value="basic" class="has-text-link">Básico</option>
+                <option value="admin" class="has-text-link">Admin</option>
               </select>
               <div class="invalid-feedback">
                 Por favor complete este campo
@@ -120,4 +120,4 @@
   </div>
 
   <script type = "module" src="/scripts/validateForms.mjs"></script>
-  <script type = "module" src="/scripts/newUser.mjs"></script>
+  <script type = "module" src="/scripts/newAndEditUser.mjs"></script>

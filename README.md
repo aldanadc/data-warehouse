@@ -37,13 +37,11 @@ Necesitarás tener instalado Node.js y un cluster de **MongoDB Atlas** o una bas
 
 2. Correr `npm i` o `npm install` en la carpeta raíz del repositorio clonado para instalar todas las dependencias necesarias.
 
-3. Crear un cluster de **MongoDB Atlas** llamada "data-warehouse" o con otro nombre elegido.
+3. Renombrar el archivo **_sample.env_** que se encuentra en la carpeta raíz para que se llame solo **_.env_**, ya que estas serán tus variables de entorno. Se puede personalizar el contenido pero debe asegurarse que se utilice la información correspondiente a la base de datos a utilizar.
 
-4. Renombrar el archivo **_sample.env_** que se encuentra en la carpeta raíz para que se llame solo **_.env_**, ya que estas serán tus variables de entorno. Se puede personalizar el contenido pero debe asegurarse que se utilice la información correspondiente a la base de datos a utilizar.
+5. Desde la carpeta _src_ ejecutar `node seedsIndex.mjs` para cargar la base de datos con la información de ejemplo. 
 
-5. Desde la carpeta _src_ ejecutar `npm run seeds` para cargar la base de datos con la información de ejemplo. 
-
-6. Desde la carpeta _src_ correr en la consola `npm run dev` y esperar mientras se establece la conexión con la base de datos. Al finalizar, la consola debería mostrar "Server is ready".
+6. Desde la carpeta _src_ ejecutar en la consola `node index.mjs` y esperar mientras se establece la conexión con la base de datos. Al finalizar, la consola debería mostrar "Connection to database open" y "Server is ready".
 
 8. La aplicación está lista para ser usada. La URL base es **http://localhost:8080/**. Asegurarse de usar el puerto correcto si se utilizó uno distinto en el archivo **_.env_**.
 

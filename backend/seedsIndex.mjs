@@ -1,6 +1,7 @@
 import { ENV } from "./config/env.mjs";
 import { locations, users, companies, contacts } from "./seeds/DBseeds.mjs";
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 import { createModel as createRegionModel } from "./db_models/region.mjs";
 import { createModel as createCountryModel } from "./db_models/country.mjs";
 import { createModel as createCityModel } from "./db_models/city.mjs";
@@ -35,6 +36,12 @@ async function connectDB() {
 }
 
 connectDB();
+
+const hashPassword = async (password) => {
+  const salt = await bcrypt.genSalt(12);
+  const hash = await bcrypt.hash(password, salt);
+  return hash
+}
 
 const seedDb = async () => {
   await Region.deleteMany({});
@@ -82,7 +89,7 @@ const seedDb = async () => {
       first_name: users[i].first_name,
       last_name: users[i].last_name,
       email: users[i].email,
-      password: users[i].password,
+      password: await hashPassword(users[i].password),
       profile: users[i].profile
     })
     await user.save();

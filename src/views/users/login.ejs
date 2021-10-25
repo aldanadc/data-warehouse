@@ -1,0 +1,28 @@
+<% layout("./layouts/boilerplate")%>
+
+<div class="card is-flex is-justify-content-center login-form mb-5">
+  <div class="card-image">
+    <img src="/images/Office-workers-organizing-data-storage.jpg" alt="" class="image login-image">
+  </div>
+  <div class="card-content">
+    <div>
+      <h1 class="p-4 has-text-centered mb-3">¡Bienvenido!</h1>
+      <form action="/login" method="POST" class="has-text-link">
+        <div class="field p-2">
+          <label class="form-label" for="email">Email</label>
+          <span class="">
+            <input class="form-control" type="email" id="email" name="logInInfo[email]">
+          </span>
+        </div>
+        <div class="field p-2">
+          <label class="form-label" for="password">Contraseña</label>
+          <span class="">
+            <input class="form-control" type="password" id="password" name="logInInfo[password]">
+          </span>
+        </div>
+
+        <button class="button is-info mt-3 ml-2">Ingresar</button>
+      </form>
+    </div>
+  </div>
+</div>

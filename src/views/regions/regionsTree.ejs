@@ -1,0 +1,63 @@
+<% layout("./layouts/boilerplate")%>
+
+  <div class="regions-tree-container">
+
+    <h1 class="is-size-3">Regiones</h1>
+
+    <a href="/regions/regions/new"><button class="button is-info my-5">Añadir región</button></a>
+
+    <div class="p-2 tree-container">
+
+        <ul id="region" class="p-0">
+          <% for (let region of regions) { %>
+            <li class="region pt-4 box is-size-4 has-text-weight-semibold has-text-link" value="<%= region._id %>">
+              <%= region.name.charAt(0).toUpperCase()+region.name.slice(1) %>
+                <div class="has-text-right">
+                  <a href="/regions/regions/<%= region._id %>/edit"><button class="button is-primary">Editar región</button></a>
+                </div>
+                <ul class="m-5 has-text-weight-normal p-0" id="country">
+                  <% for (let country of countries) { %>
+                    <% if (JSON.stringify(country.region_id)===JSON.stringify(region._id)) { %>
+                      <li class="mb-5 box is-size-5 has-text-link" value="<%= country._id %>">
+                        <%= country.name.charAt(0).toUpperCase()+country.name.slice(1) %>
+                          <ul class="m-5" id="city">
+                            <% for (let city of cities) { %>
+                              <% if (JSON.stringify(city.country_id)===JSON.stringify(country._id)) { %>
+                                <li class="my-4 is-size-6" value="<%= city._id %>">
+                                  <%= city.name.charAt(0).toUpperCase()+city.name.slice(1) %>
+                                    <a href="/regions/cities/<%= city._id %>/edit" class="ml-5 mr-2"><button
+                                        class="button is-small is-info is-outlined">Editar ciudad</button></a>
+                                    <form class="delete-form" action="/regions/cities/<%= city._id %>?_method=DELETE"
+                                      method="POST">
+                                      <button class="button is-small is-info is-outlined">Borrar ciudad</button>
+                                    </form>
+                                </li>
+                                <% } %>
+                                  <% } %>
+                          </ul>
+                          <a href="/regions/countries/<%= country._id %>/edit" class="mr-1"><button
+                              class="button is-small is-info">Editar país</button></a>
+                          <a href="/regions/<%= country._id %>/cities/new"><button
+                              class="button is-small is-info mr-1">Añadir ciudad</button></a>
+                          <form action="/regions/countries/<%= country._id %>?_method=DELETE" method="POST"
+                            class="mb-4 delete-form mr-1">
+                            <button class="mb-4 button is-small is-info delete-country">Borrar país</button>
+                          </form>
+                      </li>
+                      <% } %>
+                        <% } %>
+                </ul>
+                <a href="/regions/<%= region._id %>/countries/new"><button class="button is-primary is-outlined">Añadir
+                    país a <%= region.name %></button></a>
+                <form class="delete-form" action="/regions/regions/<%= region._id %>?_method=DELETE" method="POST">
+                  <button class="button is-primary is-outlined delete-region">Borrar región</button>
+                </form>
+            </li>
+            <% } %>
+        </ul>
+
+    </div>
+  </div>
+
+
+  <script type = "module" src="/scripts/regionsTree.mjs"></script>

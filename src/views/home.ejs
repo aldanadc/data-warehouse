@@ -1,0 +1,18 @@
+<% layout("./layouts/boilerplate")%>
+
+<div class="is-flex is-align-content-center">
+  <div class="box welcome-container has-text-centered mt-5">
+    <h1 class="mb-4">¡Bienvenido!</h1>
+    <h2 class="mb-4 has-text-link">¿A dónde vamos?</h2>
+
+    <div class="box links-container">
+      <a href="/contacts"><button class="button is-primary mb-3">Contactos</button></a>
+      <a href="/companies"><button class="button is-primary mb-3">Compañías</button></a>
+      <% if (currentUser === "admin") { %>
+        <a href="/users"><button class="button is-primary mb-3">Usuarios</button></a>
+      <% } %>
+      <a href="/regions"><button class="button is-primary mb-3">Regiones</button></a>
+    </div>
+
+  </div>
+</div>

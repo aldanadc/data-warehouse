@@ -1,0 +1,25 @@
+<% layout("./layouts/boilerplate")%>
+
+  <div class="new-edit-country-container">
+    <% if (country) { %>
+      <h1 class="is-size-3 mb-4">Editar <%= country[0].name %></h1>
+      <form action="/regions/countries/<%= country[0]._id %>?_method=PUT" method="POST" class="validated-form" novalidate>
+        <label class="mr-4 has-text-info mb-3" for="country">Nombre</label>
+        <input class="form-control" type="text" id="country" name="editCountry[name]" value="<%= country[0].name %>" required>
+        <button class="button is-info">Enviar</button>
+      </form>
+      <% } else { %>
+        <h1 class="is-size-3 mb-4">Añadir país</h1>
+        <form action="/regions/countries" method="POST" class="validated-form" novalidate>
+          <select id="region" name="newCountry[region_id]" class="form-select" required>
+            <option value="<%=region[0]._id %>" selected>
+              <%= region[0].name %>
+            </option>
+          </select>
+          <label for="country" class="has-text-info mb-3">Nombre</label>
+          <input class="form-control" type="text" id="country" name="newCountry[name]">
+          <button class="button is-info">Enviar</button>
+        </form>
+        <% } %>
+        <a href="/regions" class="has-text-info"><i class="fas fa-chevron-left mr-3"></i>Volver</a>
+  </div>

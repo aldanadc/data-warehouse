@@ -1,0 +1,46 @@
+<% layout("./layouts/boilerplate")%>
+
+  <div class="all-users-container">
+
+    <h1 class="is-size-3 mb-2">Usuarios</h1>
+
+    <a href="/users/new"><button class="button is-info mb-5 mt-5">Añadir usuario</button></a>
+    
+    <div class="card mb-5 table-container">
+      <table class="table table-striped is-bordered js-sort-table">
+        <thead class="has-background-info">
+          <th scope="col" class="table-header has-text-info-light">Nombre <i class="fas fa-sort sort-icon"></i></th>
+          <th scope="col" class="table-header has-text-info-light">Email <i class="fas fa-sort sort-icon"></i></th>
+          <th scope="col" class="table-header has-text-info-light">Perfil <i class="fas fa-sort sort-icon"></i></th>
+          <th scope="col" class="actions js-sort-none has-text-info-light">Acciones</th>
+        </thead>
+        <tbody class="">
+          <% for (let user of users) { %>
+            <tr scope="row" class="table-row has-text-link">
+              <td>
+                <%= user.first_name.charAt(0).toUpperCase()+user.first_name.slice(1) + " " + user.last_name.charAt(0).toUpperCase()+user.last_name.slice(1) %>
+              </td>
+              <td>
+                <%= user.email.toLowerCase() %>
+              </td>
+              <% if (user.profile==="basic" ) { %>
+                <td>Básico</td>
+              <% } else { %>
+                <td>Admin</td>
+              <% } %>
+              <td class="is-flex is-justify-content-space-evenly">
+                <a href="/users/<%= user._id %>/edit"><button class="button is-info is-outlined">Editar</button></a>
+                  <form action="/users/<%= user._id %>?_method=DELETE" method="POST" style="display: inline;">
+                    <button class="button is-danger is-outlined">Borrar</button>
+                  </form>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script type="module" src="/scripts/tables.mjs"></script>
+  <script type="module" src="/scripts/sort-table.mjs"></script>
+  <!-- <script type="module" src="/scripts/sharedFeatures.mjs"></script> -->

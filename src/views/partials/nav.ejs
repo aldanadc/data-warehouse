@@ -1,0 +1,18 @@
+<nav class="navbar has-background-info has-text-info-light p-0" role="navigation" aria-label="main navigation">
+  <a href="/home" class="logo-link"><img src="/images/undraw_Folder_files_re_2cbm.svg" class="logo navbar-brand image is-96x96" alt="Logo del sitio, ilustración de una persona archivando una ficha"></a>
+  
+  <div class="navbar-menu navbar-end has-text-weight-medium">
+
+    <a href="/contacts" class="menu-item has-text-info-light mr-6">Contactos</a>
+    <a href="/companies" class="menu-item has-text-info-light mr-6">Compañías</a>
+    <% if (currentUser === "admin") { %>
+      <a href="/users" class="menu-item has-text-info-light mr-6">Usuarios</a>
+    <% } %>
+    <a href="/regions" class="menu-item has-text-info-light mr-6">Región/Ciudad</a>
+    <% if (currentUser) { %>
+      <a href="/logout" class="menu-item has-text-info-light mr-6">Log out</a>
+    <% } else { %>
+      <a href="/login" class="menu-item has-text-info-light mr-6">Log in</a>
+    <% } %>
+  </div>
+</nav>

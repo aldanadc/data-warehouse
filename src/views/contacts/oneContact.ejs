@@ -1,0 +1,94 @@
+<% layout("./layouts/boilerplate")%>
+
+<div class="one-contact-container">
+  <div class="card mb-5 py-3 has-text-info">
+    <div class="card-body px-5">
+      <h5 class="card-title is-size-3 has-text-weight-bold"><%= contact[0].first_name.charAt(0).toUpperCase()+contact[0].first_name.slice(1) + " " + contact[0].last_name.charAt(0).toUpperCase()+contact[0].last_name.slice(1) %></h5>
+      <h6 class="card-subtitle mb-4 text-muted is-size-5 subtitle"><%= contact[0].role.charAt(0).toUpperCase()+contact[0].role.slice(1) + " at " + contact[0].companyInfo.name.charAt(0).toUpperCase()+contact[0].companyInfo.name.slice(1) %></h6>
+      <div class="columns mt-2">
+        <div class="column column-1 mb-1">
+          <p class="card-text has-text-weight-semibold mb-3">Email: <span class="has-text-weight-normal"><%= contact[0].email.toLowerCase() %></span></p>
+          <p class="card-text has-text-weight-semibold mb-3">Dirección: <span class="has-text-weight-normal"><%= contact[0].address.charAt(0).toUpperCase()+contact[0].address.slice(1) %></span></p>
+          <p class="card-text has-text-weight-semibold mb-5">Ubicación: <span class="has-text-weight-normal"><%= contact[0].cityInfo.name.charAt(0).toUpperCase()+contact[0].cityInfo.name.slice(1) + ", " + contact[0].cityInfo.countryInfo.name.charAt(0).toUpperCase()+contact[0].cityInfo.countryInfo.name.slice(1) %></span></p>
+          <h6 class="card-subtitle mt-3 mb-3 text-muted has-text-weight-semibold is-size-5">Interés en las propuestas</h6>
+
+            <% if (contact[0].interest === 0) { %>
+              <span class=""><%= contact[0].interest %>%</span>
+              <progress class="progress is-warning" value="<%= contact[0].interest %>" min="0" max="100"></progress>
+              <!-- <div class="progress mt-2">
+                <div class="progress-bar bg-warning zero" id="interest" min="0" max="100" value="<%= contact[0].interest %>"></div>
+              </div> -->
+            <% } else if ((contact[0].interest === 25)) { %>
+              <span><%= contact[0].interest %>%</span>
+              <progress class="progress is-warning" value="<%= contact[0].interest %>" min="0" max="100"></progress>
+              <!-- <div class="progress mt-2">
+                <div class="progress-bar bg-warning twentyFive" id="interest" min="0" max="100" value="<%= contact[0].interest %>"></div>
+              </div> -->
+            <% } else if (contact[0].interest === 50 ) { %>
+              <span><%= contact[0].interest %>%</span>
+              <progress class="progress is-info" value="<%= contact[0].interest %>" min="0" max="100"></progress>
+              <!-- <div class="progress mt-2">
+                <div class="progress-bar bg-info fifty" id="interest" min="0" max="100" value="<%= contact[0].interest %>"></div>
+              </div> -->
+              <% } else if (contact[0].interest === 75) { %>
+                <span><%= contact[0].interest %>%</span>
+                <progress class="progress is-success" value="<%= contact[0].interest %>" min="0" max="100"></progress>
+                <!-- <div class="progress mt-2">
+                  <div class="progress-bar bg-success seventyFive" id="interest" min="0" max="100" value="<%= contact[0].interest %>"></div>
+                </div> -->
+                <% } else if (contact[0].interest === 100) { %>
+                  <span class="mb-2"><%= contact[0].interest %>%</span>
+                  <progress class="progress is-success" value="<%= contact[0].interest %>" min="0" max="100"></progress>
+                  <!-- <div class="progress mt-2">
+                    <div class="progress bg-success oneHundred" id="interest" min="0" max="100" value="<%= contact[0].interest %>"></div>
+                  </div> -->
+                <% } %>
+        </div>
+        <div class="column is-three-fifths mb-1 ml-6">
+          <h6 class="card-subtitle mb-3 text-muted has-text-weight-semibold is-size-5">Métodos de contacto</h6>
+          <div class="is-flex is-justify-content-left">
+          <% contact[0].contact_methods.forEach(method => { %>
+            <div class="card mb-2 contact-method mr-3">
+              <div class="card-body has-text-info">
+                <% if (method.channel === "phone") { %>
+                  <p class="card-text">Teléfono</p>
+                <% } else if (method.channel === "email") { %>
+                  <p class="card-text">Email</p>
+                <% } else if (method.channel === "whatsapp") { %>
+                  <p class="card-text">WhatsApp</p>
+                <% } else if (method.channel === "linkedin") { %>
+                  <p class="card-text">LinkedIn</p>
+                <% } else if (method.channel === "twitter") { %>
+                  <p class="card-text">Twitter</p>
+                <% } %>
+
+                <p class="card-text is-block"><%= method.account %></p>
+                <% if (method.preference === "no preference") { %>
+                  <p class="card-text is-block">Sin preferencia</p>
+                <% } else if (method.preference === "do not disturb") { %>
+                  <p class="card-text is-block"><strong>No molestar</strong></p>
+                <% } %>
+                <% if (method.preference === "favourite") { %>
+                  <img src="/images/icons8-heart-48.png" class="image is-32x32 fav-img" title="Canal favorito"/>
+                <% } %>
+
+                
+              </div>
+            </div>
+            <% }); %>
+          </div>
+
+          <div class="buttons-container has-text-right mt-6">
+            <a href="/contacts/<%= contact[0]._id %>/edit"><button class="button is-info is-outlined mt-2">Editar contacto</button></a>
+            <form action="/contacts/<%= contact[0]._id %>?_method=DELETE" method="POST" style="display: inline;" class="ml-2">
+              <button class="button is-danger is-outlined mt-2">Borrar contacto</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="/contacts" class="has-text-info"><i class="fas fa-chevron-left mr-3"></i>Volver a todos los contactos</a>
+
+</div>

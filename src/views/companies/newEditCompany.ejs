@@ -1,0 +1,90 @@
+<% layout("./layouts/boilerplate")%>
+
+<div class="new-edit-company-container">
+
+  <% if (company) { %> 
+    <h1 class="mb-5 is-size-3">Editar <%= company[0].name %></h1>
+  <% } else { %>
+    <h1 class="mb-5 is-size-3">Crear nueva compañía</h1>
+  <% } %>
+
+  <div class="box">
+    <div>
+      <% if (company) { %>
+        <form action="/companies/<%= company[0]._id%>?_method=PUT" method="POST" class="validated-form has-text-link" novalidate>
+      <% }else { %>
+        <form action="/companies" method="POST" class="validated-form has-text-link" novalidate>
+      <% } %>
+        <div class="field p-2">
+          <label class="form-label" for="name">Nombre</label>
+          <span>
+            <% if (company) { %>
+              <input class="form-control" type="text" id="name" name="editCompany[name]" value="<%= company[0].name %>" required>
+            <% }else { %>
+              <input class="form-control" type="text" id="name" name="newCompany[name]" required>
+            <% } %>
+          </span>
+        </div>
+        <div class="field p-2">
+          <label class="form-label" for="address">Dirección</label>
+          <span>
+            <% if (company) { %>
+              <input class="form-control" type="text" id="address" name="editCompany[address]" value="<%= company[0].address%>" required>
+            <% }else { %>
+              <input class="form-control" type="text" id="address" name="newCompany[address]" required>
+            <% } %>
+          </span>
+        </div>
+        <div class="field p-2">
+          <label class="form-label" for="email">Email</label>
+          <span>
+            <% if (company) { %>
+              <input class="form-control" type="email" id="email" name="editCompany[email]" value="<%= company[0].email %>" required>
+            <% }else { %>
+              <input class="form-control" type="email" id="email" name="newCompany[email]" required>
+            <% } %>
+          </span>
+        </div>
+        <div class="field p-2">
+          <label class="form-label" for="phone_number">Número telefónico</label>
+          <span>
+            <% if (company) { %>
+              <input class="form-control" type="text" id="phone_number" name="editCompany[phone_number]" value="<%= company[0].phone_number %>" required>
+            <% }else { %>
+              <input class="form-control" type="text" id="phone_number" name="newCompany[phone_number]" required>
+            <% } %>
+          </span>
+        </div>
+        <div class="field p-2">
+          <label class="form-label" for="city">Ciudad</label>
+          <span>
+            <% if (company) { %>
+              <select class="form-select has-text-link" name="editCompany[city]" id="city" required>
+                <% for (let city of cities) { %>
+                  <% if (company[0].cityInfo.name === city.name) { %>
+                    <option value="<%= city._id %>" selected><%= city.name %></option>
+                  <% } else { %>
+                    <option class="has-text-link" value="<%= city._id %>"><%= city.name %></option>
+                  <% } %>
+                <% } %>
+              </select>
+            <% }else { %>
+              <select class="form-select" name="newCompany[city]" id="city" required>
+                <option class="has-text-link" selected>--Seleccione una opción--</option>
+                <% for (let city of cities) { %>
+                <option class="has-text-link" value="<%= city._id %>"><%= city.name %></option>
+                <% } %>
+              </select>
+            <% } %>
+          </span>
+        </div>
+
+        <button class="button is-info">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<script type = "module" src="/scripts/validateForms.mjs"></script>
+

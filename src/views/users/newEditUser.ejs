@@ -1,0 +1,123 @@
+<% layout("./layouts/boilerplate")%>
+
+  <div class="new-edit-user-container">
+
+    <% if (user) { %> 
+      <h1 class="mb-5 is-size-3">Editar usuario</h1>
+    <% } else { %>
+      <h1 class="mb-5 is-size-3">Crear nuevo usuario</h1>
+    <% } %>
+
+    <div class="box">
+      <% if (user) { %>
+        <form action="/users/<%= user[0]._id%>/edit?_method=PUT" method="POST" id="form"class="validated-form has-text-link" novalidate>
+      <% }else { %>
+        <form action="/users" method="POST" id="form" class="validated-form has-text-link" novalidate>
+      <% } %>
+        <div class="field p-2">
+          <label class="form-label" for="first_name">Nombre</label>
+          <span>
+            <% if (user) { %>
+              <input class="form-control" type="text" id="first_name" name="editUser[first_name]" value="<%= user[0].first_name %>" required>
+            <% }else { %>
+              <input class="form-control" type="text" id="first_name" name="newUser[first_name]" required>
+            <% } %>
+            <div class="invalid-feedback">
+              Por favor complete este campo
+            </div>
+          </span>
+          
+        </div>
+        <div class="field p-2">
+          <label class="form-label" for="last_name">Apellido</label>
+          <span>
+            <% if (user) { %>
+              <input class="form-control" type="text" id="last_name" name="editUser[last_name]" value="<%= user[0].last_name %>" required>
+            <% }else { %>
+              <input class="form-control" type="text" id="last_name" name="newUser[last_name]" required>
+            <% } %>
+            <div class="invalid-feedback">
+              Por favor complete este campo
+            </div>
+          </span>
+        </div>
+        <div class="field p-2">
+          <label class="form-label" for="email">Email</label>
+          <span class="">
+            <% if (user) { %>
+              <input class="form-control" type="email" id="email" name="editUser[email]" value="<%= user[0].email %>" required>
+            <% }else { %>
+              <input class="form-control" type="email" id="email" name="newUser[email]" required>
+            <% } %>
+            <div class="invalid-feedback">
+              Por favor complete este campo con formato email. Ej: email@email.com.
+            </div>
+          </span>
+        </div>
+        <div class="field p-2">
+          <label class="form-label" for="profile">Perfil</label>
+          <span>
+            <% if (user) { %>
+              <select class="form-select" name="editUser[profile]" id="profile" required>
+              <% const profiles = [ "basic", "admin"]; %>
+                <% profiles.forEach(profile=> { %>
+                  <% if (user[0].profile === profile && profile === "basic") { %>
+                    <option value="" disabled>--Seleccione un perfil--</option>
+                    <option value="basic" selected>Básico</option>
+                    <option value="admin">Admin</option>
+                  <% } else if (user[0].profile === profile && profile === "admin") { %>
+                    <option value="" disabled selected>--Seleccione un perfil--</option>
+                    <option value="basic">Básico</option>
+                    <option value="admin" selected>Admin</option>
+                  <% } %>
+                <% }) %>
+              </select>
+              <div class="invalid-feedback">
+                Por favor complete este campo
+              </div>
+            <% }else { %>
+              <select class="form-select" name="newUser[profile]" id="profile" required>
+                <option value="" disabled selected>--Seleccione un perfil--</option>
+                <option value="basic">Básico</option>
+                <option value="admin">Admin</option>
+              </select>
+              <div class="invalid-feedback">
+                Por favor complete este campo
+              </div>
+            <% } %>
+          </span>
+        </div>
+        <div class="field p-2">
+          <label class="form-label" for="password">Contraseña</label>
+          <span>
+            <% if (user) { %>
+              <input class="form-control" type="password" id="password" name="editUser[password]" value="<%= user[0].password %>" required>
+            <% }else { %>
+              <input class="form-control" type="password" id="password" name="newUser[password]" required>
+            <% } %>
+            <div class="invalid-feedback">
+              Por favor complete este campo
+            </div>
+          </span>
+        </div>
+        <div class="field p-2">
+          <label class="form-label" for="password-repeat">Repetir contraseña</label>
+          <span>
+            <% if (user) { %>
+              <input class="form-control" type="password" id="password-repeat" value="<%= user[0].password %>" required>
+            <% }else { %>
+              <input class="form-control" type="password" id="password-repeat" required>
+            <% } %>
+            <div class="invalid-feedback">
+              Por favor complete este campo
+            </div>
+          </span>
+        </div>
+
+        <button class="button is-info m-2 mt-4">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  <script type = "module" src="/scripts/validateForms.mjs"></script>
+  <script type = "module" src="/scripts/newUser.mjs"></script>

@@ -1,0 +1,43 @@
+<% layout("./layouts/boilerplate")%>
+
+<div class="all-companies-container">
+
+  <h1 class="is-size-3">Compañías</h1>
+
+  <a href="/companies/new"><button class="button is-info mb-5 mt-5">Añadir compañía</button></a>
+
+  <div class="card mb-5 table-container">
+    <table class="table table-striped is-bordered js-sort-table">
+      <thead class="has-background-info">
+        <th scope="col" class="table-header has-text-info-light">Nombre <i class="fas fa-sort sort-icon"></i></th>
+        <th scope="col" class="table-header has-text-info-light">País <i class="fas fa-sort sort-icon"></i></th>
+        <th scope="col" class="table-header has-text-info-light">Ciudad <i class="fas fa-sort sort-icon"></i></th>
+        <th scope="col" class="table-header has-text-info-light">Dirección <i class="fas fa-sort sort-icon"></i></th>
+        <th scope="col" class="table-header has-text-info-light">Teléfono <i class="fas fa-sort sort-icon"></i></th>
+        <th scope="col" class="js-sort-none has-text-info-light actions">Acciones</th>
+      </thead>
+      <tbody>
+        <% for (let company of companies) { %>
+          <tr scope="row" class="table-row has-text-link">
+              <td> <%= company.name.charAt(0).toUpperCase()+company.name.slice(1) %></td>
+              <td> <%= company.cityInfo.countryInfo.name.charAt(0).toUpperCase()+company.cityInfo.countryInfo.name.slice(1) %></td>
+              <td> <%= company.cityInfo.name.charAt(0).toUpperCase()+company.cityInfo.name.slice(1) %></td>
+              <td> <%= company.address.charAt(0).toUpperCase()+company.address.slice(1) %></td>
+              <td> <%= company.phone_number %></td>
+              <td class="is-flex is-justify-content-space-evenly">
+                <a href="/companies/<%= company._id%>/edit"><button class="button is-outlined is-info">Editar</button></a>
+                <form action="/companies/<%= company._id %>?_method=DELETE" method="POST" style="display: inline;">
+                  <button type="button" class="button is-danger is-outlined delete-company">Borrar</button>
+                </form>
+            </td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script type="module" src="/scripts/company.mjs"></script>
+<script type="module" src="/scripts/tables.mjs"></script>
+<script type="module" src="/scripts/sort-table.mjs"></script>
+<script type="module" src="/scripts/sharedFeatures.mjs"></script>

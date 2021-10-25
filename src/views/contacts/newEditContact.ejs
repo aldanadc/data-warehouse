@@ -1,0 +1,394 @@
+<% layout("./layouts/boilerplate")%>
+
+<div class="new-edit-contact-container">
+
+  <% if (contact) { %>
+    <h1 class="p-4 is-size-3">Editar contacto</h1>
+    <% } else { %>
+    <h1 class="p-4 is-size-3">Crear nuevo contacto</h1>
+    <% } %>
+
+  <% if (contact) { %>
+    <form action="/contacts/<%= contact[0]._id%>/edit?_method=PUT" method="POST" class="validated-form has-text-link" novalidate>
+  <% }else { %>
+    <form action="/contacts" method="POST" id="form" class="validated-form has-text-link" novalidate>
+  <% } %>
+      <div class="columns box has-text-link">
+        <div class="column box has-text-link" id="first-column">
+          <div class="field p-2">
+            <label class="form-label" for="first_name">Nombre</label>
+            <span>
+              <% if (contact) { %>
+                <input class="form-control" type="text" id="first_name" name="editContact[first_name]" value="<%= contact[0].first_name %>" required>
+              <% }else { %>
+                <input class="form-control" type="text" id="first_name" name="newContact[first_name]" required>
+              <% } %>
+              <div class="invalid-feedback">
+                Por favor complete este campo
+              </div>
+            </span>
+          </div>
+          <div class="field p-2">
+            <label class="form-label" for="last_name">Apellido</label>
+            <span>
+              <% if (contact) { %>
+                <input class="form-control" type="text" id="last_name" name="editContact[last_name]" value="<%= contact[0].last_name %>" required>
+              <% }else { %>
+                <input class="form-control" type="text" id="last_name" name="newContact[last_name]" required>
+              <% } %>
+              <div class="invalid-feedback">
+                Por favor complete este campo
+              </div>
+            </span>
+          </div>
+          <div class="field p-2">
+            <label class="form-label" for="role">Rol en la empresa</label>
+            <span>
+              <% if (contact) { %>
+                <input class="form-control" type="text" id="role" name="editContact[role]" value="<%= contact[0].role %>" required>
+              <% }else { %>
+                <input class="form-control" type="text" id="role" name="newContact[role]" required>
+              <% } %>
+              <div class="invalid-feedback">
+                Por favor complete este campo
+              </div>
+            </span>
+          </div>
+          <div class="field p-2">
+            <label class="form-label" for="email">Email</label>
+            <span>
+              <% if (contact) { %>
+                <input class="form-control" type="email" id="email" name="editContact[email]" value="<%= contact[0].email %>" required>
+              <% }else { %>
+                <input class="form-control" type="email" id="email" name="newContact[email]" required>
+              <% } %>
+              <div class="invalid-feedback">
+                Por favor complete este campo
+              </div>
+            </span>
+          </div>
+          <div class="field p-2">
+            <label class="form-label" for="company">Compañía</label>
+            <span>
+              <% if (contact) { %>
+                <select class="form-select" name="editContact[company]" id="company" required>
+                  <% for (let company of companies) { %>
+                    <% if (contact[0].company_id===company._id) { %>
+                      <option class="has-text-link" value="<%= company._id %>" selected>
+                        <%= company.name.charAt(0).toUpperCase()+company.name.slice(1) %>
+                      </option>
+                    <% } else { %>
+                      <option class="has-text-link" value="<%= company._id %>">
+                        <%= company.name %>
+                      </option>
+                    <% } %>
+                  <% } %>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor complete este campo
+                </div>
+              <% }else { %>
+                <select class="form-select" id="company" name="newContact[company_id]" required>
+                  <option class="has-text-link" value="" disabled selected>--Seleccione una compañía--</option>
+                  <% for (let company of companies) { %>
+                    <option class="has-text-link" value="<%= company._id %>">
+                      <%= company.name.charAt(0).toUpperCase()+company.name.slice(1)  %>
+                    </option>
+                  <% } %>
+                </select>                
+                <div class="invalid-feedback">
+                  Por favor complete este campo
+                </div>
+              <% } %>
+            </span>
+          </div>
+          <div class="field p-2">
+            <label class="form-label" for="region">Región</label>
+            <span>
+              <% if (contact) { %>
+                <select class="form-select" id="region" required>
+                  <% for (let region of regions) { %>
+                    <% if (contact[0].cityInfo.countryInfo.regionInfo.name === region.name) { %>
+                      <option class="has-text-link" value="<%= region._id %>" selected>
+                        <%= region.name.charAt(0).toUpperCase()+region.name.slice(1) %>
+                      </option>
+                    <% } else { %>
+                      <option class="has-text-link" value="<%= region._id %>">
+                        <%= region.name %>
+                      </option>
+                    <% } %>
+                  <% } %>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor complete este campo
+                </div>
+              <% }else { %>
+                <select class="form-select" id="region" required>
+                  <option class="has-text-link" value="" disabled selected>--Seleccione una región--</option>
+                    <% for (let region of regions) { %>
+                      <option class="has-text-link" value="<%= region._id %>">
+                        <%= region.name.charAt(0).toUpperCase()+region.name.slice(1) %>
+                      </option>
+                    <% } %>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor complete este campo
+                </div>
+              <% } %>
+            </span>
+          </div>
+          <div class="field p-2">
+            <label class="form-label" for="country">País</label>
+            <span>
+              <% if (contact) { %>
+                <select class="form-select" id="country" required>
+                  <% for (let country of countries) { %>
+                    <% if (contact[0].cityInfo.countryInfo.name === country.name) { %>
+                      <option class="has-text-link" value="<%= country._id %>" selected>
+                        <%= country.name.charAt(0).toUpperCase()+country.name.slice(1) %>
+                      </option>
+                    <% } else { %>
+                      <% if (contact[0].cityInfo.countryInfo.regionInfo.name === country.regionInfo.name) { %>
+                      <option class="has-text-link" value="<%= country._id %>">
+                        <%= country.name.charAt(0).toUpperCase()+country.name.slice(1) %>
+                      </option>
+                      <% } %>
+                    <% } %>
+                  <% } %>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor complete este campo
+                </div>
+              <% }else { %>
+                <select class="form-select" id="country" required>
+                  <option class="has-text-link" value="" disabled selected>--Seleccione un país--</option>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor complete este campo
+                </div>
+              <% } %>
+            </span>
+          </div>
+          <div class="field p-2">
+            <label class="form-label" for="city">Ciudad</label>
+            <span>
+              <% if (contact) { %>
+                <select class="form-select" id="city" name="editContact[city_id]" required>
+                  <% for (let city of cities) { %>
+                    <% if (contact[0].cityInfo.name === city.name) { %>
+                      <option class="has-text-link" value="<%= city._id %>" selected>
+                        <%= city.name.charAt(0).toUpperCase()+city.name.slice(1) %>
+                      </option>
+                    <% } else { %>
+                      <% if (contact[0].cityInfo.countryInfo.name === city.countryInfo.name) { %>
+                        <option class="has-text-link" value="<%= city._id %>">
+                          <%= city.name.charAt(0).toUpperCase()+city.name.slice(1) %>
+                        </option>
+                      <% } %>
+                    <% } %>
+                  <% } %>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor complete este campo
+                </div>
+              <% }else { %>
+                <select class="form-select" name="newContact[city_id]" id="city" required>
+                  <option class="has-text-link" value="" disabled selected>--Seleccione una ciudad--</option>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor complete este campo
+                </div>
+              <% } %>
+            </span>
+          </div>
+          <div class="field p-2">
+            <label class="form-label" for="address">Dirección</label>
+            <span>
+              <% if (contact) { %>
+                <input class="form-control" type="text" id="address" name="editContact[address]" value="<%= contact[0].address %>" required>
+              <% }else { %>
+                <input class="form-control" type="text" id="address" name="newContact[address]" required>
+              <% } %>
+              <div class="invalid-feedback">
+                Por favor complete este campo
+              </div>
+            </span>
+          </div>
+          <div class="field p-2">
+            <label class="form-label" for="interest">Nivel de interés</label>
+            <span>
+              <% if (contact) { %>
+                <input class="form-range" type="range" id="interest" min="0" max="100" step="25" name="editContact[interest]" value="<%= contact[0].interest %>" list="tickmarks" required>
+                <datalist id="tickmarks">
+                  <option value="0" label="0%">0</option>
+                  <option value="25" label="25%">25</option>
+                  <option value="50" label="50%">50</option>
+                  <option value="75" label="75%">75</option>
+                  <option value="100" label="100%">100</option>
+                </datalist>
+                <% }else { %>
+                <input list="tickmarks" class="form-range" type="range" id="interest" min="0" max="100" step="25" name="newContact[interest]" required>
+              <% } %>
+              <div class="invalid-feedback">
+                Por favor complete este campo
+              </div>
+            </span>
+          </div>
+        </div>
+        <div class="column box ml-4 has-text-link">
+          <p>Métodos de contacto</p>
+          <div id="channels-container" class="">
+            <% if (contact) { %>
+              <% for (let i=0; i < contact[0].contact_methods.length; i++) { %>
+                <div class="field p-2" id="channel">
+                  <div class="field p-2">
+                    <label class="form-label" for="contact_methods">Canal</label>
+                    <span>
+                      <select class="form-select" id="contact_methods" name="contact_methods[<%=`${i}`%>][channel]" required>
+                        <option class="has-text-link" selected value="<%= contact[0].contact_methods[`${i}`].channel %>">
+                          <% if (contact[0].contact_methods[`${i}`].channel === "phone") { %>
+                            Teléfono
+                          <% } else if (contact[0].contact_methods[`${i}`].preference === "email") { %>
+                            Email
+                          <% } else if (contact[0].contact_methods[`${i}`].preference === "whatsapp") { %>
+                            WhatsApp
+                          <% } else if (contact[0].contact_methods[`${i}`].preference === "linkedin") { %>
+                            LinkedIn
+                          <% } else if (contact[0].contact_methods[`${i}`].preference === "twitter") { %> 
+                            Twitter
+                          <% } %>
+                        </option>
+                        <% const channels = ["phone", "email" , "whatsapp" , "linkedin" , "twitter" ] %>
+                        <% channels.forEach(item=> { %>
+                          <% if (item !=contact[0].contact_methods[`${i}`].channel) { %>
+                            <option class="has-text-link" value="<%= item %>">
+                              <% if (item === "phone") { %>
+                                Teléfono
+                              <% } else if (item === "email") { %>
+                                Email
+                              <% } else if (item === "whatsapp") { %>
+                                WhatsApp
+                              <% } else if (item === "linkedin") { %>
+                                LinkedIn
+                              <% } else if (item === "twitter") { %> 
+                                Twitter
+                              <% } %>
+                            </option>
+                          <% } %>
+                        <% }) %>
+                      </select>
+                      <div class="invalid-feedback">
+                        Por favor complete este campo
+                      </div>
+                    </span>
+                  </div>
+                  <div class="field p-2">
+                    <label class="form-label" for="account">Cuenta de usuario</label>
+                    <span>
+                      <input class="form-control" type="text" id="account" name="contact_methods[<%=`${i}`%>][account]" value="<%= contact[0].contact_methods[`${i}`].account %>" required>
+                      <div class="invalid-feedback">
+                        Por favor complete este campo
+                      </div>
+                    </span>
+                  </div>
+                  <div class="field p-2">
+                    <label class="form-label" for="preference">Preferencias</label>
+                    <span>
+                      <select class="form-select" id="preference" name="contact_methods[<%=`${i}`%>][preference]" required>
+                        <option class="has-text-link" selected value="<%= contact[0].contact_methods[`${i}`].preference %>">
+                          <% if (contact[0].contact_methods[`${i}`].preference === "favourite") { %>
+                            Favorito
+                          <% } else if (contact[0].contact_methods[`${i}`].preference === "no preference") { %>
+                            Sin preferencia
+                          <% } else { %> 
+                            No molestar
+                          <% } %>
+                        </option>
+                        <% const preferences=["no preference","favourite", "do not disturb" ] %>
+                        <% preferences.forEach(item=> { %>
+                          <% if (item !=contact[0].contact_methods[`${i}`].preference) { %>
+                            <option class="has-text-link" value="<%= item %>">
+                              <% if (item === "favourite") { %>
+                                Favorito
+                              <% } else if (item === "no preference") { %>
+                                Sin preferencia
+                              <% } else { %> 
+                                No molestar
+                              <% } %>
+                            </option>
+                          <% } %>
+                        <% }) %>
+                      </select>
+                      <div class="invalid-feedback">
+                        Por favor complete este campo
+                      </div>
+                    </span>
+                    <p id="delete-channel" class="has-text-danger mt-2 has-text-right is-clickable">Borrar canal</p>
+                  </div>
+              <% } %>
+                </div>
+              </div>
+              <div class="mt-3 has-text-right">
+                <p id="add" class="button has-text-success">Agregar canal</p>
+              </div>
+              <button class="button is-info m-2 mt-3" id="submit">Enviar</button>
+            <% } else { %>
+              <div class="field p-2" id="channel">
+                <div class="field p-2">
+                  <label class="form-label" for="contact_methods">Canal</label>
+                  <span>
+                    <select class="form-select" id="contact_methods" name="contact_methods[0][channel]" required>
+                      <option value="" disabled selected>--Seleccione una opción--</option>
+                      <option class="has-text-link" value="phone">Teléfono</option>
+                      <option class="has-text-link" value="email">Email</option>
+                      <option class="has-text-link" value="whatsapp">WhatsApp</option>
+                      <option class="has-text-link" value="linkedin">LinkedIn</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Por favor complete este campo
+                    </div>
+                  </span>
+                </div>
+                <div class="field p-2">
+                  <label class="form-label" for="account">Cuenta de usuario</label>
+                  <span>
+                    <input class="form-control" type="text" id="account" name="contact_methods[0][account]" placeholder="Ej: dirección de email, número de teléfono, etc." required>
+                    <div class="invalid-feedback">
+                      Por favor complete este campo
+                    </div>
+                  </span>
+                </div>
+                <div class="field p-2">
+                  <label class="form-label" for="preference">Preferencias</label>
+                  <span>
+                    <select class="form-select" id="preference" name="contact_methods[0][preference]" required>
+                      <option class="has-text-link" value="" disabled selected>--Seleccione una opción--</option>
+                      <option class="has-text-link" value="no preference">Sin preferencia</option>
+                      <option class="has-text-link" value="favourite">Canal favorito</option>
+                      <option class="has-text-link" value="do not disturb">No molestar</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Por favor complete este campo
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-3 has-text-right">
+              <a id="add" class="button has-text-success">Agregar canal</a>
+            </div>
+            <button class="button is-info m-2 mt-3" id="submit">Enviar</button>
+          </div>
+            <% } %>
+        </div>
+    </form>
+</div>
+
+
+<script>
+  const countriesJson = '<%- JSON.stringify(countries) %>';
+  const citiesJson = '<%- JSON.stringify(cities) %>';
+</script>
+
+<script type="module" src="/scripts/validateForms.mjs"></script>
+<script type="module" src="/scripts/newAndEditContact.mjs"></script>

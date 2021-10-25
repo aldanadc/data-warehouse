@@ -1,0 +1,30 @@
+<% layout("./layouts/boilerplate")%>
+
+  <div class="new-edit-city-container">
+    <% if (city) { %>
+      <h1 class="is-size-3 mb-4">Editar <%= city[0].name %></h1>
+      <form action="/regions/cities/<%= city[0]._id %>?_method=PUT" method="POST" class="mb-5 validated-form" novalidate>
+        <label for="city" class="mr-3 has-text-info form-label mb-3">Nombre</label>
+        <input type="text" id="city" class="mr-3 form-control" name="editCity[name]" value="<%= city[0].name%>" required>
+        <button class="button is-info">Enviar</button>
+      </form>
+      <% } else { %>
+        <h1 class="is-size-3 mb-4">Añadir ciudad</h1>
+        <form action="/regions/cities" method="POST" class="mb-5 validated-form" novalidate>
+          <select class="form-select" id="country" name="newCity[country_id]" required>
+            <option value="<%= country[0]._id %>" selected>
+              <%= country[0].name %>
+            </option>
+          </select>
+          <div class="mt-4">
+            <label for="city" class="mr-3 form-label has-text-info mb-3">Nombre</label>
+            <input type="text" id="city" class="mr-3 form-control" name="newCity[name]" required>
+            <button class="button is-info">Enviar</button>
+          </div>
+        </form>
+        <% } %>
+
+        <a href="/regions" class="has-text-info"><i class="fas fa-chevron-left mr-3"></i>Volver</a>
+  </div>
+
+  <script type = "module" src="/scripts/validateForms.mjs"></script>

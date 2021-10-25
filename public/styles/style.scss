@@ -1,0 +1,327 @@
+html {
+  min-height: 100vh;
+  font-size: 16px;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  a {
+    text-decoration: none
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .navbar {
+    .logo-link {
+      margin-left: 3%;
+    }
+
+    .navbar-menu {
+      .menu-item {
+        padding-bottom: 0.3rem;
+      }
+    }
+
+    .navbar-menu {
+      .menu-item.selected {
+        border-bottom: 1px solid rgba(255,255,255,0.5);
+      }
+    }
+    
+
+  }
+
+  main {
+
+    margin: auto;
+    width: 85%;
+    
+    h1 {
+      //color: #fbb13c;
+      color: #01d1b2;
+    }
+
+    // margin: auto;
+    // width: 90%;
+
+    .all-companies-container {
+
+      .table-container {
+        width: 95%;
+        margin: auto;
+
+        .table {
+
+          .actions {
+            width: 18%;
+          }
+        }
+      }
+    }
+
+    .new-edit-company-container, .new-edit-user-container{
+      width: 45%;
+    }
+
+    .all-contacts-container {
+      // width: 90%;
+      // margin: auto;
+
+      #search-section {
+        #main-search-wrapper {
+          width: 40%;
+          height: 45px;
+          border: 1px solid #fbb13c;
+          border-radius: 10px;
+
+          input {
+            border: none;
+            margin-left: 5%;
+            width: 80%;
+          }
+        }
+
+        .no-results {
+          margin-top: 45px;
+        }
+      }
+
+      #results-table {
+        width: 75%;
+        margin-top: 3rem;
+      }
+
+
+      .tag {
+        border-radius: 10px;
+      }
+
+      .table-container {
+        width: 100%;
+        margin: auto;
+
+        .table {
+          margin-bottom: 0;
+  
+          .actions {
+            width: 27%;
+          }
+        }
+      }
+      
+      
+
+      .progress {
+        width: 150px;
+      }
+    }
+
+    .new-edit-contact-container {
+      .column {
+        margin: 0;
+
+      }
+    }
+
+    .welcome-container {
+      width: 40%;
+      margin: auto;
+
+      .links-container {
+        margin: auto;
+        
+        width: 60%;
+        a {
+          display: block;
+
+          .button {
+            width: 200px;
+          }
+        }
+      }
+    }
+
+    .all-users-container {
+      // width: 85%;
+      // margin: auto;
+
+      .table-container {
+        width: 80%;
+        margin: auto;
+
+        .actions {
+          width: 23%;
+        }
+      }
+    }
+
+    .new-edit-city-container, .new-edit-country-container, .new-edit-region-container {
+
+      h1 {
+        margin-bottom: 3rem;
+      }
+
+      button {
+        display: block;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      select {
+        display: block;
+        margin-bottom: 3rem;
+      }
+
+      form {
+        width: 25%;
+      }
+    }
+  }
+
+  .one-contact-container {
+    width: 90%;
+    margin: auto;
+
+    .progress {
+      width: 250px;
+    }
+
+    .contact-method {
+      width: 40%;
+    }
+
+
+    .column-1 {
+      border-right: 1.5px solid lightgray;
+    }
+  }
+
+  .regions-tree-container {
+    // width: 90%;
+    // margin: auto;
+
+    .tree-container {
+      width: 70%;
+      margin: auto;
+    }
+    
+  }
+
+  // .table-head {
+  //   height: 4rem;
+  // }
+
+  // form {
+  //   width: 40%;
+  // }
+
+  .form-item {
+    width: 30%;
+    display: inline;
+  }
+
+  .login-form {
+    width: 40%;
+    margin: 0 auto 500px auto;
+    
+  }
+
+  // .login-image {
+  //   width: 500px;
+  //   height: 350px;
+  // }
+
+  .table {
+    margin-bottom: 0;
+    
+    td {
+      vertical-align: middle;
+    }
+
+    .table-header:hover {
+      cursor: pointer;
+    }
+  }
+
+  
+
+  .delete-form {
+    display: inline;
+  }
+  
+  // .show-contact-card {
+  //   width: 60%;
+  // }
+
+
+  .footer {
+   //position: relative; 
+    margin-top: 150px;
+    //bottom: 0; 
+    width: 100%;
+    justify-content: space-between;
+    padding: 0;
+
+    .author, .attribution {
+      color: #B5DEF0;
+    }
+
+  }
+
+
+  // .progress-bar.zero {
+  //   width: 0%;
+  // }
+
+  // .progress-bar.twentyFive {
+  //   width: 25%;
+  // }
+
+  // .progress-bar.fifty {
+  //   width: 50%;
+  // }
+
+  // .progress-bar.seventyFive {
+  //   width: 75%;
+  // }
+
+  // .progress-bar.oneHundred {
+  //   width: 100%;
+  // }
+
+  .table-row.hover {
+    background-color: rgba(251, 177, 60, 0.3);
+  }
+
+  .table-row.selected {
+    //background-color: rgba(242, 117, 35, 0.3);
+    background-color: rgba(251, 177, 60, 0.3);
+  }
+}
+
+
+
+// html {
+//   position: relative;
+// }
+
+// html, body {
+//   margin: 0;
+//   padding: 0;
+//   min-height: 100%;
+// }
+
+// .footer {
+//   position: absolute;
+//   bottom: 0;
+// }
+

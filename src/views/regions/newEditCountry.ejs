@@ -13,7 +13,7 @@
         <form action="/regions/countries" method="POST" class="validated-form" novalidate>
           <select id="region" name="newCountry[region_id]" class="form-select" required>
             <option value="<%=region[0]._id %>" selected>
-              <%= region[0].name %>
+              <%= region[0].name.charAt(0).toUpperCase()+region[0].name.slice(1) %>
             </option>
           </select>
           <label for="country" class="has-text-info mb-3">Nombre</label>

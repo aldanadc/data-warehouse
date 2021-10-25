@@ -4,7 +4,7 @@
   <div class="card mb-5 py-3 has-text-info">
     <div class="card-body px-5">
       <h5 class="card-title is-size-3 has-text-weight-bold"><%= contact[0].first_name.charAt(0).toUpperCase()+contact[0].first_name.slice(1) + " " + contact[0].last_name.charAt(0).toUpperCase()+contact[0].last_name.slice(1) %></h5>
-      <h6 class="card-subtitle mb-4 text-muted is-size-5 subtitle"><%= contact[0].role.charAt(0).toUpperCase()+contact[0].role.slice(1) + " at " + contact[0].companyInfo.name.charAt(0).toUpperCase()+contact[0].companyInfo.name.slice(1) %></h6>
+      <h6 class="card-subtitle mb-4 text-muted is-size-5 subtitle"><%= contact[0].role.charAt(0).toUpperCase()+contact[0].role.slice(1) + " en " + contact[0].companyInfo.name.charAt(0).toUpperCase()+contact[0].companyInfo.name.slice(1) %></h6>
       <div class="columns mt-2">
         <div class="column column-1 mb-1">
           <p class="card-text has-text-weight-semibold mb-3">Email: <span class="has-text-weight-normal"><%= contact[0].email.toLowerCase() %></span></p>

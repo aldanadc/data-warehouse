@@ -29,7 +29,7 @@ const createNewUser = async (request, response, next) => {
   if (!request.body.newUser) throw new ExpressError(400, "Información inválida");
   const { email } = request.body.newUser;
   const existingUser = await getUsers({email: email});
-  if (existingUser) {
+  if (existingUser.length > 0) {
     throw new ExpressError(400, "Ya existe un usuario registrado con ese email");
   }else {
     await createUser(request.body.newUser);

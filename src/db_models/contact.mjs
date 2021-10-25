@@ -46,18 +46,7 @@ const contactSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "cities",
     required: true
-  }
-  ,
-  // country_id: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "countries",
-  //   required: true
-  // },
-  // region_id: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "regions",
-  //   required: true
-  // },
+  },
   address: {
     type: String,
     required: true

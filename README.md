@@ -41,12 +41,12 @@ Necesitarás tener instalado Node.js y un cluster de **MongoDB Atlas** o una bas
 
 5. Desde la carpeta _src_ ejecutar `node seedsIndex.mjs` para cargar la base de datos con la información de ejemplo. 
 
-6. Desde la carpeta _src_ ejecutar en la consola `node index.mjs` y esperar mientras se establece la conexión con la base de datos. Al finalizar, la consola debería mostrar "Connection to database open" y "Server is ready".
+6. Una vez terminado el proceso del paso anterior, nuevamente desde la carpeta _src_ ejecutar `node index.mjs` y esperar mientras se establece la conexión con la base de datos y comienza el servidor. Al finalizar, la consola debería mostrar "Connection to database open" y "Server is ready".
 
 8. La aplicación está lista para ser usada. La URL base es **http://localhost:8080/**. Asegurarse de usar el puerto correcto si se utilizó uno distinto en el archivo **_.env_**.
 
 ### Usuarios y permisos
-Se puede utilizar cualquiera de los usuarios provistos para realizar las pruebas. Aquí hay dos ejemplos:
+Se puede utilizar cualquiera de los usuarios provistos para hacer log in. Aquí hay dos ejemplos:
 #### Administrador
 - email: ididntstartthefire@email.com
 - password: Password1

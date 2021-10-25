@@ -32,17 +32,6 @@ countrySchema.post("findOneAndDelete", async (doc) => {
   }
 });
 
-// countrySchema.post("deleteMany", async (doc) => {
-//   if (doc) {
-//     console.log(doc) //VER NO ANDA, VER CÓMO ACCEDER AL ID
-//     await City.deleteMany({
-//       country_id: {
-//         $in: doc._id
-//       }
-//     })
-//   }
-// });
-
 export function createModel() {
   return mongoose.model('countries', countrySchema);
 }

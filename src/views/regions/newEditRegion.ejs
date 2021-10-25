@@ -3,7 +3,7 @@
   <div class="new-edit-region-container">
 
     <% if (region) { %>
-      <h1 class="is-size-3">Editar <%= region[0].name %></h1>
+      <h1 class="is-size-3">Editar región</h1>
       <form action="/regions/regions/<%= region[0]._id %>?_method=PUT" method="POST" class="validated-form" novalidate>
         <label for="region" class="has-text-info mb-3">Nombre</label>
         <input class="form-control" type="text" id="region" name="editRegion[name]" value="<%= region[0].name %>" required>

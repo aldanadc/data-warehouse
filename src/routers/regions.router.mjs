@@ -130,7 +130,7 @@ const deleteACity = async (request, response) => {
     return next(new ExpressError(400, "ID de ciudad inválido"));
   }
   const cityToDelete = await deleteCity(id);
-  if (cityToDelete === null || cityToDelete.length === 0) throw new ExpressError(404, "País inexistente");
+  if (cityToDelete === null) throw new ExpressError(404, "País inexistente");
   response.redirect("/regions");
 }
 
@@ -179,6 +179,6 @@ const deleteACountry = async (request, response, next) => {
     return next(new ExpressError(400, "ID de país inválido"));
   }
   const countryToDelete = await deleteCountry(id);
-  if (countryToDelete === null || countryToDelete.length === 0) throw new ExpressError(404, "País inexistente");
+  if (countryToDelete === null) throw new ExpressError(404, "País inexistente");
   response.redirect("/regions");
 }

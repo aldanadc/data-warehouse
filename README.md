@@ -37,13 +37,13 @@ Necesitarás tener instalado Node.js y un cluster de **MongoDB Atlas** o una bas
 
 2. Correr `npm i` o `npm install` en la carpeta raíz del repositorio clonado para instalar todas las dependencias necesarias.
 
-3. Renombrar el archivo **_sample.env_** que se encuentra en la carpeta raíz para que se llame solo **_.env_**, ya que estas serán tus variables de entorno. Se puede personalizar el contenido pero debe asegurarse que se utilice la información correspondiente a la base de datos a utilizar.
+3. Renombrar el archivo **_sample.env_** que se encuentra en la carpeta raíz para que se llame solo **_.env_**, ya que estas serán tus variables de entorno. Se puede personalizar el contenido pero debe asegurarse que se utilice la información correspondiente a la base de datos a utilizar. Se deberá modificar DB_SCHEMA y DB_AUTHORITY de acuerdo al tipo de base de datos que se utilice (local o remota).
 
-5. Desde la carpeta _backed_ ejecutar `node seedsIndex.mjs` para cargar la base de datos con la información de ejemplo. 
+4. Desde la carpeta _backed_ ejecutar `node seedsIndex.mjs` para cargar la base de datos con la información de ejemplo. 
 
-6. Una vez terminado el proceso del paso anterior, nuevamente desde la carpeta _backend_ ejecutar `node index.mjs` y esperar mientras se establece la conexión con la base de datos y comienza el servidor. Al finalizar, la consola debería mostrar "Connection to database open" y "Server is ready".
+5. Una vez terminado el proceso del paso anterior, nuevamente desde la carpeta _backend_ ejecutar `node index.mjs` y esperar mientras se establece la conexión con la base de datos y comienza el servidor. Al finalizar, la consola debería mostrar "Connection to database open" y "Server is ready".
 
-8. La aplicación está lista para ser usada. La URL base para ingresar en el navegador es **http://localhost:8080/**. Asegurarse de usar el puerto correcto si se utilizó uno distinto en el archivo **_.env_**.
+6. La aplicación está lista para ser usada. La URL base para ingresar en el navegador es **http://localhost:8080/**. Asegurarse de usar el puerto correcto si se utilizó uno distinto en el archivo **_.env_**.
 
 ### Usuarios y permisos
 Se puede utilizar cualquiera de los usuarios provistos para hacer log in. Aquí hay dos ejemplos:
@@ -70,7 +70,7 @@ You will need to have Node.js and a MongoDB cluster or local MongoDB database.
 
 2. Run `npm i` or `npm install` on the cloned repo's root folder to install all necessary dependencies.
 
-3. Rename the **_sample.env_** file in the project's root folder to be only **_.env_** as these will be your environment variables. You can customize the variables as you like but make sure you use the correct information for the database to use for this project.
+3. Rename the **_sample.env_** file in the project's root folder to be only **_.env_** as these will be your environment variables. You can customize the variables as you like but make sure you use the correct information for the database to use for this project. For example, you will need to update DB_SCHEMA and DB_AUTHORITY according to the type of database you will use (local or remote).
 
 4. From the _backend_ folder, run `node seedsIndex.mjs` on your console in order to seed the database with the example collections.
 

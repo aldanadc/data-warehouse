@@ -6,7 +6,7 @@ Cuarto proyecto de la carrera de Desarrollo Web Full Stack en Acámica. Se trata
 
 ---
 
-Project #3 from the Full Stack Web Development course at Acámica. Application for the management of potential customers's data for marketing purposes.
+Project #4 from the Full Stack Web Development course at Acámica. Application for the management of potential customers's data for marketing purposes.
 
 ---
 
@@ -21,7 +21,7 @@ Tecnologías y recursos utilizados / Technologies and resources used:
 * JWT
 * dotenv
 * nodemon
-* sort-tablessss
+* [sort-tables](https://github.com/stationer/SortTable)
 
 
 ![image](https://user-images.githubusercontent.com/75340355/120859230-4c22a700-c55a-11eb-81c8-57ef271ae508.png)
@@ -29,25 +29,23 @@ Tecnologías y recursos utilizados / Technologies and resources used:
 ## Cómo utilizarlo 
 
 ### Prerrequisitos
-Necesitarás tener instalado Node.js.
+Necesitarás tener instalado Node.js y un cluster de **MongoDB Atlas** o una base de datos local de **MongoDB**.
 
 ### Empezando
 
-1. Desde la consola, clonar el repositorio utilizando el link "https://github.com/aldanadc/delilah-resto.git" o corriendo `gh repo clone aldanadc/delilah-resto` desde GitHub CLI.
+1. Desde la consola, clonar el repositorio utilizando el link "https://github.com/aldanadc/data-warehouse.git" o corriendo `gh repo clone aldanadc/data-warehouse` desde GitHub CLI.
 
 2. Correr `npm i` o `npm install` en la carpeta raíz del repositorio clonado para instalar todas las dependencias necesarias.
 
-3. Comenzar los servicios de MySQL y Apache.
+3. Crear un cluster de **MongoDB Atlas** llamada "data-warehouse" o con otro nombre elegido.
 
-4. Crear una base de datos local **MariaDB** o **MySQL** llamada "delilah" o con otro nombre elegido.
+4. Renombrar el archivo **_sample.env_** que se encuentra en la carpeta raíz para que se llame solo **_.env_**, ya que estas serán tus variables de entorno. Se puede personalizar el contenido pero debe asegurarse que se utilice la información correspondiente a la base de datos a utilizar.
 
-5. Renombrar el archivo **_sample.env_** que se encuentra en la carpeta raíz para que se llame solo **_.env_**, ya que estas serán tus variables de entorno. Se puede personalizar el contenido desde SERVER_PORT hacia abajo. Asegurarse de que se utilice la información correspondiente a la base de datos creada si es diferente de la provista.
+5. Desde la carpeta _src_ ejecutar `npm run seeds` para cargar la base de datos con la información de ejemplo. 
 
-6. Desde la carpeta _src_ correr en la consola `npm run dev` y esperar mientras se establece la conexión con la base de datos y se crean las tablas. Al finalizar, la consola debería mostrar "Server is ready".
+6. Desde la carpeta _src_ correr en la consola `npm run dev` y esperar mientras se establece la conexión con la base de datos. Al finalizar, la consola debería mostrar "Server is ready".
 
-7. Importar el archivo **_delilah.sql_** que se encuentra en el repositorio a la base de datos creada o correr las consultas tipo insert encontradas allí para rellenar las tablas con la información inicial. 
-
-8. La API está lista para ser usada. Se pueden utilizar cualquiera de las operaciones detalladas en el archivo de especificaciones **_spec.v1.yaml_** para probar los endpoints existentes. También se puede utilizar esta [colección](https://www.getpostman.com/collections/84741c7aee6fee2516c8) de Postman para realizar las consultas, importándola previamente desde la aplicación. La URL base para todos los endpoints es **http://localhost:8080/api/1.0.0/**. Asegurarse de usar el puerto correcto si se utilizó uno distinto en el archivo **_.env_**.
+8. La aplicación está lista para ser usada. La URL base es **http://localhost:8080/**. Asegurarse de usar el puerto correcto si se utilizó uno distinto en el archivo **_.env_**.
 
 ### Usuarios y permisos
 Se puede utilizar cualquiera de los usuarios provistos para realizar las pruebas. Aquí hay dos ejemplos:
@@ -58,8 +56,6 @@ Se puede utilizar cualquiera de los usuarios provistos para realizar las pruebas
 #### No administrador
 - email: acaseofyou@email.com
 - password: Password2
-
-Una vez realizado exitosamente el login, se devolverá un JWT que deberá utilizarse para realizar las consultas. Copiarlo y pegarlo en la cabecera Authorization con el tipo "Bearer token". 
 
 
 ![image](https://user-images.githubusercontent.com/75340355/120859230-4c22a700-c55a-11eb-81c8-57ef271ae508.png)

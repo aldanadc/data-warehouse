@@ -21,7 +21,7 @@ Tecnologías y recursos utilizados / Technologies and resources used:
 * JWT
 * dotenv
 * nodemon
-* sort-table
+* sort-tablessss
 
 
 ![image](https://user-images.githubusercontent.com/75340355/120859230-4c22a700-c55a-11eb-81c8-57ef271ae508.png)

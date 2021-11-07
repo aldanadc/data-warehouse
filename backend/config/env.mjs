@@ -1,8 +1,9 @@
 import dotenv from "dotenv";
-dotenv.config({path: "../.env"});
+dotenv.config({path: "./.env"});
 
 export const ENV = {
-  SERVER_PORT: process.env.SERVER_PORT,
+  PORT: process.env.PORT,
+  HOST: process.env.HOST,
   DB_SCHEMA: process.env.DB_SCHEMA,
   DB_AUTHORITY: process.env.DB_AUTHORITY,
   DB_NAME: process.env.DB_NAME,
@@ -10,5 +11,4 @@ export const ENV = {
   DB_PASSWORD: process.env.DB_PASSWORD,
   JWT_SECRET: process.env.JWT_SECRET
 }
-
 

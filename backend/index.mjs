@@ -13,7 +13,6 @@ import methodOverride from "method-override";
 import ExpressError from "./utils/ExpressError.mjs";
 const __dirname = path.resolve();
 
-
 function loadMiddlewares(server) {
   server.use(json());
   server.use(urlencoded({ extended: true }));
@@ -42,8 +41,8 @@ function loadRouters(server) {
 function config(server) {
   server.engine("ejs", ejsMate);
   server.set("view engine", "ejs");
-  server.set("views", path.join(__dirname, "views"));
-  server.use(express.static("../front"));
+  server.set("views", path.join(__dirname, "backend/views"));
+  server.use(express.static("front"));
 }
 
 
@@ -72,8 +71,10 @@ async function main() {
   })
 
   await connectDB();
-  server.listen(ENV.SERVER_PORT || 3000, () => console.log(`Server is ready`));
+  server.listen(process.env.PORT || 3000, process.env.HOST || "0.0.0.0", () => console.log(`Server is ready`));
 }
+
+console.log(process.env.PORT)
 
 main();
 

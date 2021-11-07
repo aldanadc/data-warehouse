@@ -16,6 +16,7 @@ const Company = createCompanyModel();
 const Contact = createContactModel();
 
 const URL = `${ENV.DB_SCHEMA}://${ENV.DB_USERNAME}:${ENV.DB_PASSWORD}@${ENV.DB_AUTHORITY}/${ENV.DB_NAME}`;
+console.log(URL)
 
 export default async function connectDB() {
 

@@ -22,7 +22,8 @@ export async function authenticateUser(request, response, next) {
     next();
 
   } else {
-    response.redirect("/login")
+    response.locals.currentUser = null;
+    throw new ExpressError(401, "Credenciales inválidas. Intente otra vez.")
   }
 }
 

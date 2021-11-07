@@ -70,11 +70,16 @@ export async function validateUserAgainstDB(logInInfo) {
     email: email,
   }).exec();
 
-  const match = await bcrypt.compare(password, user.password);
-  if (match) {
-    return user;
-  } else {
-    return false;
+  if (user) {
+    const match = await bcrypt.compare(password, user.password);
+    if (match) {
+      return user;
+    } else {
+      return false;
+    }
+  }
+  else {
+    return false
   }
 }
 

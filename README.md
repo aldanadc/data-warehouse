@@ -28,7 +28,7 @@ Tecnologías y recursos utilizados / Technologies and resources used:
 * cookie-parser
 * method-override
 * path
-* [sort-tables](https://github.com/stationer/SortTable)
+* [sort-table](https://github.com/stationer/SortTable)
 
 
 ![image](https://user-images.githubusercontent.com/75340355/120859230-4c22a700-c55a-11eb-81c8-57ef271ae508.png)

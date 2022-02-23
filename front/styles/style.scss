@@ -216,6 +216,35 @@ body {
     width: 40%;
     margin: 0 auto 500px auto;
     
+    .idea {
+      position: relative;
+      left: 90%;
+      padding-bottom: 15px;
+      animation-duration: 2s;
+    }
+
+    .idea:hover {
+      cursor: pointer;
+      color: white;
+      transform: scale(1.2);
+      transition-duration: 1s;
+    }
+
+    .idea-text {
+      position: relative;
+      z-index: 3;
+      background-color: white;
+      left: 105%;
+      top: -50px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(211, 215, 216, 0.7);
+      padding: 0.2em 1em;
+      margin-bottom: -45px;
+    }
+
+    .idea-text.hidden {
+      visibility: hidden;
+    }
   }
 
   .table {

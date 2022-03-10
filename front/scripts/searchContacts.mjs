@@ -1,8 +1,8 @@
 function searchContacts (inputValue) {
 
   async function newSearch(searchTerm) {
-    const url = `http://localhost:8080/contacts/search/${searchTerm}`
-    //const url = `https://your-data-warehouse.herokuapp.com/contacts/search/${searchTerm}`
+    //const url = `http://localhost:8080/contacts/search/${searchTerm}`
+    const url = `https://your-data-warehouse.herokuapp.com/contacts/search/${searchTerm}`
     const response = await fetch(url);
     const data = await response.json();
     console.log(data)
